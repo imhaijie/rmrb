@@ -1,13 +1,13 @@
 
 <?php
 echo '
-<?xml version="1.0" encoding="GB-2312" ?>
+<?xml version="1.0" encoding="unicode" ?>
 <rss version="2.0">
 
 <channel>
-<title>ÈËÃñÈÕ±¨È«ÎÄ</title>
+<title>äººæ°‘æ—¥æŠ¥å…¨æ–‡</title>
   <link>http://paper.people.com.cn</link>
-  <description>ÈËÃñÈÕ±¨È«ÎÄby--haijie</description>
+  <description>äººæ°‘æ—¥æŠ¥å…¨æ–‡by--haijie</description>
   <item>
   ';
 //echo 'Hello, World!<br>';
@@ -16,9 +16,9 @@ echo '
 function chkurl($url){
     $handle = curl_init($url);
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);//ÉèÖÃ³¬Ê±Ê±¼ä
+    curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);//è®¾ç½®è¶…æ—¶æ—¶é—´
     curl_exec($handle);
-    //¼ì²éÊÇ·ñ404£¨ÍøÒ³ÕÒ²»µ½£©
+    //æ£€æŸ¥æ˜¯å¦404ï¼ˆç½‘é¡µæ‰¾ä¸åˆ°ï¼‰
     $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
     if($httpCode == 404) {
       return false;
@@ -35,18 +35,18 @@ for ($x=1; $x<=12; $x++) {
 	{
 		if($x<10)$url="http://paper.people.com.cn/rmrb/html/20".$g1."/nw.D110000renmrb_20".date(ymd)."_".$hh."-0".$x.".htm";
 		else $url="http://paper.people.com.cn/rmrb/html/20".$g1."/nw.D110000renmrb_20".date(ymd)."_".$hh."-".$x.".htm";
-		//echo "µÚ".$x."°æ µÚ".$hh."Æª£º<br>";
+		//echo "ç¬¬".$x."ç‰ˆ ç¬¬".$hh."ç¯‡ï¼š<br>";
 		if(chkurl($url)==true)
 		{
-			echo "<title>µÚ".$x."°æ µÚ".$hh."Æª</title>";
+			echo "<title>ç¬¬".$x."ç‰ˆ ç¬¬".$hh."ç¯‡</title>";
 			echo "<link>$url</link>";
-			echo "<description>µÚ$x°æ µÚ$hhÆª:$url</description>"
+			echo "<description>ç¬¬$xç‰ˆ ç¬¬$hhç¯‡:$url</description>";
 		}
 		
 		
 	}
 	
-	//echo "Êı×ÖÊÇ£º$x <br>";
+	//echo "æ•°å­—æ˜¯ï¼š$x <br>";
 }
 echo '  </item>
 </channel>
