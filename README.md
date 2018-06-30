@@ -1,4 +1,4 @@
-appengine-php-guestbook
+人民日报feed
 ================================
 
-Guestbook demo for Google App Engine that uses PHP
+枚举人民日报http://paper.people.com.cn 的网页来做rss订阅。
