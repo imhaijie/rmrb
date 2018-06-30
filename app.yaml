@@ -5,9 +5,3 @@ threadsafe: true
 handlers:
 - url: /.*
   script: helloworld.php
-
-- url: /01.*
-  script: 01.php
-  
-- url: /02.*
-  script: 02.php
