@@ -5,10 +5,10 @@ echo '
 <rss version="2.0">
 
 <channel>
-<title>人民日报全文</title>
-  <link>http://paper.people.com.cn</link>
-  <description>人民日报全文by--haijie</description>
-  <item>
+<title>人民日报全文</title><br>
+  <link>http://paper.people.com.cn</link><br>
+  <description>人民日报全文by--haijie</description><br>
+  
   ';
 //echo 'Hello, World!<br>';
 
@@ -28,19 +28,34 @@ function chkurl($url){
     curl_close($handle);
 }
 
-$g1=date("y-m")."/".date(d);
-$g2=date(ymd);
+function http_status_404($url) {
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_HEADER, 1);
+curl_setopt($ch, CURLOPT_NOBODY, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+curl_exec($ch);
+$status = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+return ($status == 404) ? false : true;
+}
+
+$g1=date("Y-m")."/".date("d");
+$g2=date("Ymd");
 for ($x=1; $x<=12; $x++) {
-  	for($hh=1;$hh<=11;$hh++)
+  	for($hh=1;$hh<=12;$hh++)
 	{
-		if($x<10)$url="http://paper.people.com.cn/rmrb/html/20".$g1."/nw.D110000renmrb_20".date(ymd)."_".$hh."-0".$x.".htm";
-		else $url="http://paper.people.com.cn/rmrb/html/20".$g1."/nw.D110000renmrb_20".date(ymd)."_".$hh."-".$x.".htm";
+		if($x<10)$url='http://paper.people.com.cn/rmrb/html/'.$g1.'/nw.D110000renmrb_'.date("Ymd").'_'.$hh.'-0'.$x.'.htm';
+		else $url='http://paper.people.com.cn/rmrb/html/'.$g1.'/nw.D110000renmrb_'.date("Ymd").'_'.$hh.'-'.$x.'.htm';
 		//echo "第".$x."版 第".$hh."篇：<br>";
-		if(chkurl($url)==true)
+		if(http_status_404($url)==true)
 		{
-			echo "<title>第".$x."版 第".$hh."篇</title>";
-			echo "<link>$url</link>";
-			echo "<description>第$x版 第$hh篇:$url</description>";
+			echo '<item>';
+			echo '<title>第'.$x.'版 第'.$hh.'篇</title><br>';
+			echo "<link>$url</link><br>";
+			echo '<description>第'.$x.'版 第'.$hh.'篇</description><br>';
+			echo '</item>';
 		}
 		
 		
@@ -48,7 +63,7 @@ for ($x=1; $x<=12; $x++) {
 	
 	//echo "数字是：$x <br>";
 }
-echo '  </item>
+echo '  
 </channel>
 
 </rss>';
