@@ -1,7 +1,8 @@
 
 <?php
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'; 
 echo '
-<?xml version="1.0" encoding="unicode" ?>
+<?xml version="1.0" encoding="utf_8" ?>
 <rss version="2.0">
 
 <channel>
@@ -65,5 +66,4 @@ for ($x=1; $x<=12; $x++) {
 }
 echo '  
 </channel>
-
 </rss>';
