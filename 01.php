@@ -3,14 +3,14 @@
 echo '<html>
 <head>
 <meta charset="GB-2312">
-<title>人民日报报纸全文</title>
+<title>人民日报要闻1</title>
 </head>
 
 <body>';
 echo 'Hello, World!<br>';
 $g1=date("y-m")."/".date(d);
 $g2=date(ymd);
-for ($x=1; $x<=12; $x++) {
+for ($x=1; $x<=3; $x++) {
   	for($hh=1;$hh<=11;$hh++)
 	{
 		echo "第".$x."版 第".$hh."篇：<br>";
