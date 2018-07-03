@@ -14,20 +14,6 @@ echo '
 //echo 'Hello, World!<br>';
 
 
-function chkurl($url){
-    $handle = curl_init($url);
-    curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);//设置超时时间
-    curl_exec($handle);
-    //检查是否404（网页找不到）
-    $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-    if($httpCode == 404) {
-      return false;
-    }else{
-        return true;
-    }
-    curl_close($handle);
-}
 
 function http_status_404($url) {
 $ch = curl_init();
@@ -62,8 +48,7 @@ for ($x=1; $x<=12; $x++) {
 		
 	}
 	
-	//echo "数字是：$x <br>";
+	
 }
-echo '  
-</channel>
-</rss>';
+echo "</channel>
+</rss>";
