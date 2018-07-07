@@ -3,5 +3,7 @@ api_version: 1
 threadsafe: true
 
 handlers:
+-url: /rmrb.php
+ script: rmrb-1.php
 - url: /.*
   script: helloworld.php
